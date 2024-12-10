@@ -184,7 +184,12 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes() => 0
  */
 function sumOfCodes(str) {
-  throw new Error('Not implemented');
+  const arr = str.split('');
+  let sum = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    sum += arr[i];
+  }
+  return sum;
 }
 
 /**
@@ -199,7 +204,7 @@ function sumOfCodes(str) {
  *   startsWith('Hello World', 'Hello') => true
  */
 function startsWith(str, substr) {
-  throw new Error('Not implemented');
+  return str.startsWith(substr);
 }
 
 /**
@@ -214,7 +219,7 @@ function startsWith(str, substr) {
  *   endsWith('Hello World', 'Hello') => false
  */
 function endsWith(str, substr) {
-  throw new Error('Not implemented');
+  return str.endsWith(substr);
 }
 
 /**
@@ -231,7 +236,7 @@ function endsWith(str, substr) {
  *   formatTime(0, 0) => "00:00"
  */
 function formatTime(minutes, seconds) {
-  throw new Error('Not implemented');
+  return minutes.padStart(2, '0') + ':' + seconds.padStart(2, '0');
 }
 
 /**
@@ -245,7 +250,7 @@ function formatTime(minutes, seconds) {
  *   reverseString('12345') => '54321'
  */
 function reverseString(str) {
-  throw new Error('Not implemented');
+  return str.split('').reverse().join('');
 }
 
 /**
@@ -260,7 +265,7 @@ function reverseString(str) {
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
 function orderAlphabetically(str) {
-  throw new Error('Not implemented');
+  return str.split('').sort().join('');
 }
 
 /**
@@ -276,7 +281,7 @@ function orderAlphabetically(str) {
  *   containsSubstring('12345', '34') => true
  */
 function containsSubstring(str, substring) {
-  throw new Error('Not implemented');
+  return str.includes(substring);
 }
 
 /**
@@ -294,7 +299,12 @@ function containsSubstring(str, substring) {
  *   countVowels('XYZ') => 1
  */
 function countVowels(str) {
-  throw new Error('Not implemented');
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+  let count = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    if (vowels.includes(str.charAt(i))) count += 1;
+  }
+  return count;
 }
 
 /**
@@ -311,7 +321,8 @@ function countVowels(str) {
  *   isPalindrome('No lemon, no melon') => true
  */
 function isPalindrome(str) {
-  throw new Error('Not implemented');
+  const reverseStr = str.split('').reverse().join('');
+  return str === reverseStr;
 }
 
 /**
@@ -327,7 +338,9 @@ function isPalindrome(str) {
  *   findLongestWord('No words here') => 'words'
  */
 function findLongestWord(sentence) {
-  throw new Error('Not implemented');
+  const arr = sentence.split(' ');
+  arr.sort( (a, b) -> b.length - a.length);
+  return arr[0];
 }
 
 /**
