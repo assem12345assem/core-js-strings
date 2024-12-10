@@ -354,7 +354,9 @@ function findLongestWord(sentence) {
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
 function reverseWords(str) {
-  throw new Error('Not implemented');
+  const arr = str.split(' ');
+  arr.forEach(a => a.split('').reverse().joint(''));
+  return arr.join(' ');
 }
 
 /**
@@ -369,7 +371,12 @@ function reverseWords(str) {
  *   invertCase('12345') => '12345'
  */
 function invertCase(str) {
-  throw new Error('Not implemented');
+  const ans;
+  for (let i = 0; i < str.length; i += 1) {
+    let c = str.charAt(i)
+    ans += (c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase();
+  }
+  return ans;
 }
 
 /**
@@ -386,7 +393,7 @@ function invertCase(str) {
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-  throw new Error('Not implemented');
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -400,7 +407,9 @@ function getStringFromTemplate(firstName, lastName) {
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  throw new Error('Not implemented');
+  const regex = /Hello, (.+)!/;
+  const match = value.match(regex);
+  return match[1];
 }
 
 /**
@@ -415,7 +424,7 @@ function extractNameFromTemplate(value) {
  *   unbracketTag('<a>') => 'a'
  */
 function unbracketTag(str) {
-  throw new Error('Not implemented');
+  return str.slice(1, -1);
 }
 
 /**
@@ -434,7 +443,7 @@ function unbracketTag(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-  throw new Error('Not implemented');
+  return str.split(';');
 }
 
 /**
@@ -454,7 +463,15 @@ function extractEmails(str) {
  *
  */
 function encodeToRot13(str) {
-  throw new Error('Not implemented');
+  let arr = str.split('');
+  for (let i = 0; i < arr.length; i += 1) {
+    if(!/[a-zA-Z]/.test(arr[i])) continue;
+    const ifUpperCase = arr[i] === arr[i].toUpperCase() ? 97 : 65;
+    const code = arr[i].toLowerCase().charCodeAt(0) - 97;
+    const newCode = (code + 13) % 26 + ifUpperCase;
+    arr[i] = String.fromCharCode(newCode);
+  }
+  return arr.join('');
 }
 
 /**
@@ -482,7 +499,41 @@ function encodeToRot13(str) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  throw new Error('Not implemented');
+  let order;
+  const first = value[0];
+  if (Number.isInteger(first)) {
+    order += first;
+  } else {
+    switch (first) {
+      case 'A':
+        order += 1;
+        break;
+      case 'J':
+        order += 11;
+        break;
+      case 'Q':
+        order += 12;
+        break;
+      default:
+        order += 13;
+        break;
+    }
+  }
+  const second = value[1];
+  switch (second) {
+    case '♦':
+      order += 13;
+      break;
+    case '♥':
+      order += 26;
+      break;
+    case '♠':
+      order += 39;
+      break;
+    default:
+      break;
+  }
+  return order - 1;
 }
 
 module.exports = {
